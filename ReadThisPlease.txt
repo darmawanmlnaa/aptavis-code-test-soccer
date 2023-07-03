@@ -1,3 +1,14 @@
 This code may not be effective, 
 but i want to show you different ways to do crud in laravel.
 Thanks.
+
+
+Step :
+1. Pull or download the zip
+2. extract
+3. Make sure you have composer and xampp or apache and mariadb
+4. composer update
+5. run php artisan migrate:fresh and make sure you have config the .env file
+6. php artisan serve on terminal
+
+if there's an error run php artisan optimize

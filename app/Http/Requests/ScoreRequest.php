@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ScoreRequest extends FormRequest
 {
@@ -22,8 +23,18 @@ class ScoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_club_id' => ['required'],
-            'second_club_id' => ['required'],
+            'first_club_id' => [
+                'required',
+                Rule::unique('scores')->where(function ($query) {
+                    return $query->where('second_club_id', $this->input('second_club_id'));
+                }),
+            ],
+            'second_club_id' => [
+                'required',
+                Rule::unique('scores')->where(function ($query) {
+                    return $query->where('first_club_id', $this->input('first_club_id'));
+                }),
+            ],
             'score_first_club' => ['required'],
             'score_second_club' => ['required'],
         ];
