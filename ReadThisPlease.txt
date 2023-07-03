@@ -1,0 +1,3 @@
+This code may not be effective, 
+but i want to show you different ways to do crud in laravel.
+Thanks.
